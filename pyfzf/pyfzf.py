@@ -40,9 +40,9 @@ class FzfPrompt:
                 "Cannot find 'fzf' installed on PATH. ( {0} )".format(FZF_URL)
             )
 
-    def prompt(self, choices=None, fzf_options=""):
+    def prompt(self, choices=None, fzf_options="", delimiter='\n'):
         # convert lists to strings [ 1, 2, 3 ] => "1\n2\n3"
-        choices_str = "\n".join(map(str, choices))
+        choices_str = delimiter.join(map(str, choices))
         selection = []
         with tempfile.NamedTemporaryFile() as input_file:
             with tempfile.NamedTemporaryFile() as output_file:
